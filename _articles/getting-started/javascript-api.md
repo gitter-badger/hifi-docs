@@ -15,14 +15,14 @@ If you are running on the interface client, the 'Avatar' is you, and is called '
 
 ### Properties:
 
-* Vec3 MyAvatar.position 
+* vec3 MyAvatar.position 
 * float MyAvatar.scale 
-* Vec3 MyAvatar.handPosition 
+* vec3 MyAvatar.handPosition 
 * float MyAvatar.bodyYaw
 * float MyAvatar.bodyPitch
 * float MyAvatar.bodyRoll
-* Quat MyAvatar.orientation 
-* Quat MyAvatar.headOrientation
+* quat MyAvatar.orientation 
+* quat MyAvatar.headOrientation
 * float MyAvatar.headPitch 
 * float MyAvatar.audioLoudness 
 * float MyAvatar.audioAverageLoudness 
@@ -35,12 +35,12 @@ If you are running on the interface client, the 'Avatar' is you, and is called '
 * number MyAvatar.collisionGroups
 * bool MyAvatar.shouldRenderLocally 
 * number MyAvatar.motionBehaviors
-* Vec3 MyAvatar.gravity
+* vec3 MyAvatar.gravity
 
 
 ### Functions:
 
-* Vec3 MyAvatar.getTargetAvatarPosition()
+* vec3 MyAvatar.getTargetAvatarPosition()
 The position of the avatar that you are looking at.
 * MyAvatar.updateCollisionGroups()
 * MyAvatar.goHome() 
@@ -48,9 +48,9 @@ The position of the avatar that you are looking at.
 * MyAvatar.decreaseSize()
 * MyAvatar.resetSize()
 * MyAvatar.updateLocationInDataServer()
-* MyAvatar.addThrust(Vec3 trust)
-* Vec3 MyAvatar.getThrust()
-* MyAvatar.setThrust(Vec3 newTrust)
+* MyAvatar.addThrust(vec3 trust)
+* vec3 MyAvatar.getThrust()
+* MyAvatar.setThrust(vec3 newTrust)
 * MyAvatar.updateMotionBehaviorsFromMenu()
 
 
@@ -60,11 +60,11 @@ The position of the avatar that you are looking at.
 
 ### Attachments
 
-* MyAvatar.attach(string attachmentURL, string jointName, Vec3 translation,Quat rotation, float scale, bool allowDuplicates, bool useSaved)
-* MyAvatar.attach(string attachmentURL, string jointName, Vec3 translation,Quat rotation, float scale, bool allowDuplicates)
-* MyAvatar.attach(string attachmentURL, string jointName, Vec3 translation,Quat rotation, float scale)
-* MyAvatar.attach(string attachmentURL, string jointName, Vec3 translation,Quat rotation)
-* MyAvatar.attach(string attachmentURL, string jointName, Vec3 translation)
+* MyAvatar.attach(string attachmentURL, string jointName, vec3 translation, quat rotation, float scale, bool allowDuplicates, bool useSaved)
+* MyAvatar.attach(string attachmentURL, string jointName, vec3 translation, quat rotation, float scale, bool allowDuplicates)
+* MyAvatar.attach(string attachmentURL, string jointName, vec3 translation, quat rotation, float scale)
+* MyAvatar.attach(string attachmentURL, string jointName, vec3 translation, quat rotation)
+* MyAvatar.attach(string attachmentURL, string jointName, vec3 translation)
 * MyAvatar.attach(string attachmentURL, string jointName)
 * MyAvatar.attach(string attachmentURL)
 * MyAvatar.detachOne(string attachmentURL, string jointName)
@@ -78,9 +78,9 @@ Use these functions to get and set the rotations of an avatar's joints.
 * stringList MyAvatar.getJointNames() 
 This function will return a list of names of joints in the avatar you are wearing (obviously we are going to need to pick some sort of typical standard so that animations can be mapped to avatars) 
 
-* MyAvatar.setJointData(string jointName, Quat rotation)     
+* MyAvatar.setJointData(string jointName, quat rotation)     
 Set a joint to a new position
-* Quat MyAvatar.getJointRotation(string jointName)
+* quat MyAvatar.getJointRotation(string jointName)
 Current joint position
 * MyAvatar.clearJointData("joint_R_hip")  
 Return a joint to the default position
@@ -91,25 +91,25 @@ Note that right now, joint positions are updated every frame whenever they are m
 Particles are moving/moveable objects that are stored in an octree server and transmitted to clients and interactive agents that are near enough to see them.  Particles can have model files attached to them, changing their appearance.  
  
 ### Callback Functions: 
-* particleCollisionWithVoxel(ParticleID particleID, VoxelDetail voxel);
-* particleCollisionWithParticle(ParticleID idA, ParticleID idB);
+* particleCollisionWithVoxel(ParticleID particleID, VoxelDetail voxel)
+* particleCollisionWithParticle(ParticleID idA, ParticleID idB)
 
 ### Functions:
 * ParticleID addParticle(ParticleProperties properties)
 * ParticleID identifyParticle(ParticleID particleID)
 * ParticleProperties getParticleProperties(ParticleID particleID)
-* ParticleID editParticle(ParticleID particleID, ParticleProperties properties);
+* ParticleID editParticle(ParticleID particleID, ParticleProperties properties)
 * deleteParticle(ParticleID particleID)
 * ParticleID findClosestParticle(vec3 center, float radius)
 * QVector<ParticleID> findParticles(vec3 center, float radius)
 
 ### ParticleProperties
 
-* Vec3 ParticleProperties.position
+* vec3 ParticleProperties.position
 * {red:, green:, blue:} ParticleProperties.color
 * float ParticleProperties.radius
-* Vec3 ParticleProperties.velocity
-* Vec3 ParticleProperties.gravity
+* vec3 ParticleProperties.velocity
+* vec3 ParticleProperties.gravity
 * float ParticleProperties.damping
 * float ParticleProperties.lifetime
 * string ParticleProperties.script
@@ -117,8 +117,8 @@ Particles are moving/moveable objects that are stored in an octree server and tr
 * bool ParticleProperties.shouldDie
 * string ParticleProperties.modelURL
 * float ParticleProperties.modelScale
-* Vec3 ParticleProperties.modelTranslation
-* Quat ParticleProperties.modelRotation
+* vec3 ParticleProperties.modelTranslation
+* quat ParticleProperties.modelRotation
 
 
 # Voxels 
@@ -134,8 +134,8 @@ _"Voxels.getVoxelAt(0, 0, 0, 1.0).red" would return the value of red from the vo
 * void eraseVoxel(float x, float y, float z, float scale) queues the deletion of a voxel, sent by calling process on the PacketSender
 * RayToVoxelIntersectionResult findRayIntersection(PickRay ray) If the scripting context has visible voxels, this will determine a ray intersection, the results may be inaccurate if the engine is unable to access the visible voxels, in which case result.accurate will be false.
 * RayToVoxelIntersectionResult findRayIntersectionBlocking(PickRay ray) If the scripting context has visible voxels, this will determine a ray intersection, and will block in order to return an accurate result
-* Vec3 getFaceVector(string face) returns a voxel space axis aligned vector for the face, useful in doing voxel math
-* VoxelDetail getVoxelEnclosingPoint(Vec3 point) checks the local voxel tree for the smallest voxel enclosing the point
+* vec3 getFaceVector(string face) returns a voxel space axis aligned vector for the face, useful in doing voxel math
+* VoxelDetail getVoxelEnclosingPoint(vec3 point) checks the local voxel tree for the smallest voxel enclosing the point
 
 ### VoxelDetail
 
@@ -154,26 +154,26 @@ _"Voxels.getVoxelAt(0, 0, 0, 1.0).red" would return the value of red from the vo
 * VoxelDetail voxel
 * float distance
 * string face  (possible values MIN_X_FACE, MAX_X_FACE, MIN_Y_FACE, MAX_Y_FACE, MIN_Z_FACE, MAX_Z_FACE, UNKNOWN_FACE)
-* Vec3 intersection
+* vec3 intersection
 
 # Clipboard functions for Voxels 
 Clipboard.
 
 ### Functions:
 
-* cutVoxel(VoxelDetail sourceVoxel);
-* cutVoxel(float x, float y, float z, float s);
-* copyVoxel(VoxelDetail sourceVoxel);
-* copyVoxel(float x, float y, float z, float s);
-* pasteVoxel(VoxelDetail destinationVoxel);
-* pasteVoxel(float x, float y, float z, float s);
-* deleteVoxel(const VoxelDetail& sourceVoxel);
-* deleteVoxel(float x, float y, float z, float s);
-* exportVoxel(const VoxelDetail& sourceVoxel);
-* exportVoxel(float x, float y, float z, float s);
-* importVoxels();
-* nudgeVoxel(VoxelDetail sourceVoxel, vec3 nudgeVec);
-* nudgeVoxel(float x, float y, float z, float s, vec3 nudgeVec);
+* cutVoxel(VoxelDetail sourceVoxel)
+* cutVoxel(float x, float y, float z, float s)
+* copyVoxel(VoxelDetail sourceVoxel)
+* copyVoxel(float x, float y, float z, float s)
+* pasteVoxel(VoxelDetail destinationVoxel)
+* pasteVoxel(float x, float y, float z, float s)
+* deleteVoxel(const VoxelDetail& sourceVoxel)
+* deleteVoxel(float x, float y, float z, float s)
+* exportVoxel(const VoxelDetail& sourceVoxel)
+* exportVoxel(float x, float y, float z, float s)
+* importVoxels()
+* nudgeVoxel(VoxelDetail sourceVoxel, vec3 nudgeVec)
+* nudgeVoxel(float x, float y, float z, float s, vec3 nudgeVec)
 
 ### Callback Functions:
 
@@ -187,8 +187,8 @@ Audio is continuously mixed in 3D and re-transmitted to interactive clients by t
 * AudioInjector playSound(Sound sound)
 * stopInjector(AudioInjector injector)
 * isInjectorPlaying(AudioInjector injector)
-* startDrumSound(float volume,float frequence, float duration, float decay, AudioInjectorOptions injectorOptions)
-* startDrumSound(float volume,float frequence, float duration, float decay)
+* startDrumSound(float volume, float frequence, float duration, float decay, AudioInjectorOptions injectorOptions)
+* startDrumSound(float volume, float frequence, float duration, float decay)
 
 ### Sound
 
@@ -196,7 +196,7 @@ Audio is continuously mixed in 3D and re-transmitted to interactive clients by t
 
 ### AudioInjectorOptions
 
-* Vec3 position
+* vec3 position
 * float volume
 * bool loop
 
@@ -226,31 +226,33 @@ Script.clearInterval(multiple_timer);
 Quaternion and Vector functions are included in the javascript API to make it easier to build content. 
 
 Quaternion functions:
-* quat Quat.multiply(const glm::quat& q1, const glm::quat& q2);
-* quat Quat.fromVec3Degrees(const glm::vec3& vec3);
-* quat Quat.fromVec3Radians(const glm::vec3& vec3);
-* quat Quat.fromPitchYawRollDegrees(float pitch, float yaw, float roll);
+
+* quat Quat.multiply(quat q1, quat q2)
+* quat Quat.fromVec3Degrees(vec3 vec3)
+* quat Quat.fromVec3Radians(vec3 vec3)
+* quat Quat.fromPitchYawRollDegrees(float pitch, float yaw, float roll)
 * quat Quat.fromPitchYawRollRadians(float pitch, float yaw, float roll)
-* quat inverse(const glm::quat& q);
-* vec3 getFront(const glm::quat& orientation);
-* vec3 getRight(const glm::quat& orientation);
-* vec3 getUp(const glm::quat& orientation);
-* vec3 safeEulerAngles(const glm::quat& orientation);
-* quat angleAxis(float angleInDegrees, const glm::vec3& v);
-* quat mix( quat q1, quat q2, float alpha);
-* void print(string lable, quat q);
+* quat inverse(quat q)
+* vec3 getFront(quat orientation)
+* vec3 getRight(quat orientation)
+* vec3 getUp(quat orientation)
+* vec3 safeEulerAngles(quat orientation)
+* quat angleAxis(float angleInDegrees, vec3 v)
+* quat mix( quat q1, quat q2, float alpha)
+* void print(string lable, quat q)
 
 Vector3 functions: 
-* vec3 cross(vec3 v1, vec3 v2);
-* float dot(Vec3 v1, vec3 v2);
-* vec3 multiply(const glm::vec3& v1, float f);
-* vec3 multiplyQbyV(const glm::quat& q, const glm::vec3& v);
-* vec3 sum(const glm::vec3& v1, const glm::vec3& v2);
-* vec3 subtract(const glm::vec3& v1, const glm::vec3& v2);
-* float length(const glm::vec3& v);
-* float distance(Vec3 v1, Vec3 v2);
-* Vec3 normalize( Vec3 v);
-* void print( string lable, Vec3 v);
+
+* vec3 cross(vec3 v1, vec3 v2)
+* float dot(vec3 v1, vec3 v2)
+* vec3 multiply(vec3 v1, float f)
+* vec3 multiplyQbyV(quat q, vec3 v)
+* vec3 sum(vec3 v1, vec3 v2)
+* vec3 subtract(vec3 v1, vec3 v2)
+* float length(vec3 v)
+* float distance(vec3 v1, vec3 v2)
+* vec3 normalize( vec3 v)
+* void print(string lable, vec3 v)
 
 # Camera Functions
 The camera is the viewport for an interactive client (Interface).  You can move the camera (independent of the avatar) through the javascript calls here.  
@@ -274,16 +276,16 @@ The following only work on independent cameras.
 The mouse as well as 3D controllers like the Razer Hydra can be accessed from these functions. 
 
 Callback Functions you can register: 
-ex: Controller.mouseMoveEvent.connect(mouseMoveEvent); 
+ex: Controller.mouseMoveEvent.connect(mouseMoveEvent)
 * keyPressEvent(KeyEvent event)
 * keyReleaseEvent(KeyEvent event)
 * mouseMoveEvent(MouseEvent event)
 * mousePressEvent(MouseEvent event)
-* mouseReleaseEvent(MouseEvent event);
-* touchBeginEvent(TouchEvent event);
-* touchEndEvent(TouchEvent event);
-* touchUpdateEvent(TouchEvent event);
-* wheelEvent(WheelEvent event);
+* mouseReleaseEvent(MouseEvent event)
+* touchBeginEvent(TouchEvent event)
+* touchEndEvent(TouchEvent event)
+* touchUpdateEvent(TouchEvent event)
+* wheelEvent(WheelEvent event)
 
 Functions: 
 * bool isPrimaryButtonPressed()
@@ -299,8 +301,8 @@ Functions:
 * vec3 getSpatialControlVelocity(int controlIndex)
 * vec3 getSpatialControlNormal(int controlIndex)
 * quat getSpatialControlRawRotation(int controlIndex)
-* void captureKeyEvents(const KeyEvent& event)
-* void releaseKeyEvents(const KeyEvent& event)
+* void captureKeyEvents(KeyEvent event)
+* void releaseKeyEvents(KeyEvent event)
 * void captureMouseEvents()
 * void releaseMouseEvents()
 * void captureTouchEvents()
