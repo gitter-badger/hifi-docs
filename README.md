@@ -1,5 +1,6 @@
 hifi-docs
 =========
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/JeroMiya/hifi-docs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 We need your help in building robust documentation for High Fidelity. If you would like to participate, add your suggestion as a job on Worklist via http://worklist.net/job/add/ (select the hifi-docs project) -- we will pay you for your thoughtful technical writing.
 
